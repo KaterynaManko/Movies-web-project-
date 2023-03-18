@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, url_for, redirect, flash
 import tmdb_client
 import datetime
+from waitress import serve
 
 
 app = Flask(__name__)
@@ -85,5 +86,5 @@ def show_favorites():
     return render_template("homepage.html", movies=movies)
     
 if __name__ == '__main__':
-     app.run(debug=True)
+     serve(app, host='127.0.0.1', port=8080, threads=1)
     
